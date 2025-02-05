@@ -1,0 +1,9 @@
+<h2>Recommendations for Patient {{ patientId }}</h2>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+<ul>
+  <li *ngFor="let recommendation of recommendations">
+    {{ recommendation.type }}: {{ recommendation.description }} ({{ recommendation.date | date }})
+  </li>
+</ul>

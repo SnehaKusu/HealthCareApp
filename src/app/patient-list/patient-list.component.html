@@ -1,0 +1,9 @@
+<h2>Patient List</h2>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+<ul>
+  <li *ngFor="let patient of patients">
+    <a [routerLink]="['/recommendations', patient.id]">{{ patient.name }}</a>
+  </li>
+</ul>

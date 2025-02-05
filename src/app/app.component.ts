@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { Component, inject, OnInit } from '@angular/core';
+import { ApiService } from './services/api.service';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'HealthcareAppFrontend';
+export class AppComponent implements OnInit {
+  private apiService = inject(ApiService);  // Injected properly
+  title = 'HealthcareApp'; 
+
+  ngOnInit() {
+    this.apiService.getData().subscribe(data => {
+      console.log(data);
+    });
+  }
 }
